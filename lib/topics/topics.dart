@@ -22,11 +22,20 @@ class TopicsScreen extends StatelessWidget {
             ),
           );
         } else if (snapshot.hasData) {
-          //
+          var topics = snapshot.data!;
           return Scaffold(
             appBar: AppBar(
-                backgroundColor: Colors.deepPurple,
-                title: const Text('Topics')),
+              backgroundColor: Colors.deepPurple,
+              title: const Text('Topics'),
+            ),
+            body: GridView.count(
+              crossAxisCount: 2,
+              crossAxisSpacing: 10,
+              primary: false,
+              padding: const EdgeInsets.all(20),
+              children: topics.map((topic) => Text(topic.title)).toList(),
+            ),
+            bottomNavigationBar: const BottomNavBar(),
           );
         } else {
           //
