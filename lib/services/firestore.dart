@@ -22,4 +22,18 @@ class FirestoreService {
     var snapshot = await ref.get();
     return Quiz.fromJson(snapshot.data() ?? {});
   }
+
+
+  // Listning to a real time stream of user reports. This reports section updates as users completed quizes.
+  Stream<Report> streamReport() {
+    // listen for the current signed in user id
+    return AuthService().userStream.switchMap((user) {
+      if (user != null) {
+        var ref = _db.collection('reports').doc(user.uid);
+        return ref.snapshots().map((doc) => Report.fromJson(doc.data()!));
+      } else {
+        return Stream.fromIterable([Report()]);
+      }
+    });
+  }
 }
