@@ -30,11 +30,7 @@ class TopicsScreen extends StatelessWidget {
           );
         } else {
           //
-          return Scaffold(
-            appBar: AppBar(
-                backgroundColor: Colors.deepPurple,
-                title: const Text('No Data')),
-          );
+          return const Text('No topics found! Our database seems to be empty!');
         }
       },
     );
