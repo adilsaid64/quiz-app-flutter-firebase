@@ -4,6 +4,7 @@ import 'package:quiz_app/services/models.dart';
 import 'package:quiz_app/shared/bottom_nav.dart';
 import 'package:quiz_app/shared/error.dart';
 import 'package:quiz_app/shared/loading.dart';
+import 'package:quiz_app/topics/topic_item.dart';
 
 class TopicsScreen extends StatelessWidget {
   const TopicsScreen({super.key});
@@ -33,7 +34,7 @@ class TopicsScreen extends StatelessWidget {
               crossAxisSpacing: 10,
               primary: false,
               padding: const EdgeInsets.all(20),
-              children: topics.map((topic) => Text(topic.title)).toList(),
+              children: topics.map((topic) => TopicItem(topic: topic)).toList(),
             ),
             bottomNavigationBar: const BottomNavBar(),
           );
