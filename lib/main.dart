@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // Import the firebase_core plugin
 import 'package:firebase_core/firebase_core.dart';
 import 'package:quiz_app/routes.dart';
+import 'package:quiz_app/shared/loading.dart';
 import 'package:quiz_app/theme.dart';
 
 void main() {
@@ -52,7 +53,7 @@ class _AppState extends State<App> {
         // Otherwise, show something whilst waiting for initialization to complete
         return const Directionality(
           textDirection: TextDirection.ltr,
-          child: Text('loading'),
+          child: LoadingScreen(),
         );
       },
     );
