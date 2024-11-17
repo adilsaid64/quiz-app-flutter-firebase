@@ -9,6 +9,8 @@ import 'package:quiz_app/services/models.dart';
 import 'package:quiz_app/shared/loading.dart';
 import 'package:quiz_app/theme.dart';
 
+import 'package:quiz_app/services/models.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const App());
@@ -63,6 +65,17 @@ class _AppState extends State<App> {
           child: LoadingScreen(),
         );
       },
+    );
+  }
+}
+
+class QuizState with ChangeNotifier {
+  final PageController controller = PageController();
+
+  void nextPage() async {
+    await controller.nextPage(
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeOut,
     );
   }
 }
